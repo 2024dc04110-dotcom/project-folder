@@ -7,12 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Import models
-from model.logistic_regression import run_model as logistic
-from model.decision_tree import run_model as decision_tree
-from model.knn import run_model as knn
-from model.naive_bayes import run_model as naive_bayes
-from model.random_forest import run_model as random_forest
-from model.xgboost import run_model as xgboost
+from model.logistic_regression import LogisticRegressionModel
 
 MODEL_MAP = {
     "Logistic Regression": logistic,
