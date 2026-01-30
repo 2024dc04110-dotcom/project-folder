@@ -3,4 +3,4 @@ pandas
 scikit-learn
 seaborn
 matplotlib
-model
+model.logistic_regression
