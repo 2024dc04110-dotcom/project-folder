@@ -7,7 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Import models
-from model.logistic_regression import LogisticRegressionModel
+from model.logistic_regression import logistic
 
 MODEL_MAP = {
     "Logistic Regression": logistic,
