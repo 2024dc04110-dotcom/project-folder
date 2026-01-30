@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 import seaborn as sns
 import matplotlib.pyplot as plt
