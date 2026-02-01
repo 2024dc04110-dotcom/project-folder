@@ -12,6 +12,7 @@ from model.decision_tree import run_model as decision_tree
 
 MODEL_MAP = {
     "Logistic Regression": logistic,
+    "Decision Tree": decision_tree,
 }
 
 st.title("📊 ML Assignment-2 Classification App")
