@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 # Import models
 from model.logistic_regression import run_model as logistic
+from model.decision_tree import run_model as decision_tree
 
 MODEL_MAP = {
     "Logistic Regression": logistic,
