@@ -23,7 +23,7 @@ MODEL_MAP = {
     "XGBoost": xgboost
 }
 
-st.title("📊 ML Assignment-2 Classification App")
+st.title("📊 ML Classification Models")
 
 uploaded_file = st.file_uploader("Upload CSV (Test Data)", type=["csv"])
 
