@@ -9,10 +9,18 @@ import matplotlib.pyplot as plt
 # Import models
 from model.logistic_regression import run_model as logistic
 from model.decision_tree import run_model as decision_tree
+from model.knn import run_model as knn
+from model.naive_bayes import run_model as naive_bayes
+from model.random_forest import run_model as random_forest
+from model.xgboost import run_model as xgboost
 
 MODEL_MAP = {
     "Logistic Regression": logistic,
     "Decision Tree": decision_tree,
+    "KNN": knn,
+    "Naive Bayes": naive_bayes,
+    "Random Forest": random_forest,
+    "XGBoost": xgboost
 }
 
 st.title("📊 ML Assignment-2 Classification App")
