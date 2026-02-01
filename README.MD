@@ -53,52 +53,11 @@ This dataset is used for predicting heart failure based on clinical features.
 
 ## Model Performance Observations
 
-### Logistic Regression
-- Strong overall performance with good accuracy and high AUC.
-- High precision with few false positives.
-- Slightly lower recall, missing some positive cases.
-- MCC indicates solid balanced performance.
-
-Observation:
-A reliable and interpretable baseline model with strong discrimination power, but weaker in capturing all positives compared to ensemble methods.
-
-### Decision Tree
-- Lowest accuracy and AUC among all models.
-- High precision but noticeably lower recall.
-- F1 score and MCC indicate weaker overall performance.
-
-Observation:
-The Decision Tree underperforms and likely suffers from overfitting or limited generalization.
-
-### KNN
-- High accuracy and very strong AUC.
-- Well-balanced precision and recall.
-- Strong F1 score and MCC.
-
-Observation:
-KNN performs very well overall but may be computationally expensive for large datasets.
-
-### Naive Bayes
-- Accuracy comparable to KNN with a strong AUC.
-- Highest precision among all models.
-- Slightly lower recall.
-- Good MCC indicating balanced performance.
-
-Observation:
-Naive Bayes is effective when minimizing false positives, with some trade-off in recall.
-
-### Random Forest (Ensemble)
-- Best overall accuracy and highest AUC.
-- Strong balance between precision and recall.
-- Highest F1 score and MCC.
-
-Observation:
-Random Forest is the best-performing model, offering robustness and strong generalization.
-
-### XGBoost (Ensemble)
-- Accuracy slightly lower than Random Forest but still very high.
-- Strong AUC and balanced precision and recall.
-- MCC slightly lower than Random Forest.
-
-Observation:
-XGBoost delivers consistently high performance and is highly tunable.
+| ML Model Name | Observation about model performance |
+|--------------|------------------------------------|
+| Logistic Regression | Shows strong overall performance with good accuracy and a high AUC, indicating excellent class separability. Precision is high, meaning it makes few false positive predictions. Recall is slightly lower, so it may miss some positive cases. MCC suggests solid but not top-tier balanced performance. Observation: A reliable and interpretable baseline model with good discrimination power, but slightly weaker in capturing all positives compared to ensemble methods. |
+| Decision Tree | Lowest accuracy and lowest AUC among all models. Precision is relatively high, but recall is noticeably lower. F1 score and MCC indicate weaker overall and balanced performance. Observation: The Decision Tree underperforms compared to other models and likely suffers from overfitting or limited generalization. |
+| KNN | High accuracy and very strong AUC. Precision and recall are well balanced. F1 score and MCC reflect strong classification capability. Observation: KNN performs very well overall, particularly in distinguishing classes, but may be computationally expensive for large datasets. |
+| Naive Bayes | Accuracy comparable to KNN, with a strong AUC. Highest precision among all models, meaning very few false positives. Recall is slightly lower, indicating some missed positives. MCC suggests good balanced performance. Observation: Naive Bayes is highly effective when minimizing false positives is important, though it trades off some recall. |
+| Random Forest (Ensemble) | Best overall accuracy and highest AUC. Strong balance between precision and recall. Highest F1 score and MCC, indicating excellent and well-balanced performance. Observation: Random Forest is the best-performing model overall, providing robustness, strong generalization, and balanced predictions. |
+| XGBoost (Ensemble) | Accuracy slightly lower than Random Forest but still very high. AUC indicates strong discriminative ability. Precision and recall are well balanced. MCC shows strong but slightly inferior performance to Random Forest. Observation: XGBoost delivers high and consistent performance, closely rivaling Random Forest, with the advantage of being highly tunable. |
