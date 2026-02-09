@@ -25,13 +25,64 @@ MODEL_MAP = {
 
 st.title("📊 ML Classification Models")
 
-uploaded_file = st.file_uploader("Upload CSV (Test Data)", type=["csv"])
+# ------------------------------------------
+# Dataset Source Selection
+# ------------------------------------------
+st.subheader("📂 Choose Data Source")
 
-if uploaded_file:
-    df = pd.read_csv(uploaded_file)
+col1, col2 = st.columns(2)
+
+with col1:
+    upload_btn = st.button("📤 Upload Dataset", key="upload_btn", use_container_width=True)
+
+with col2:
+    github_btn = st.button("📥 Data Set from GitHub", key="github_btn", use_container_width=True)
+
+# Initialize session state
+if "data_source" not in st.session_state:
+    st.session_state.data_source = None
+
+if upload_btn:
+    st.session_state.data_source = "upload"
+
+if github_btn:
+    st.session_state.data_source = "github"
+
+# ------------------------------------------
+# Load Data Based on Selection
+# ------------------------------------------
+df = None
+
+if st.session_state.data_source == "upload":
+    st.subheader("📤 Upload Your Dataset")
+    uploaded_file = st.file_uploader(
+        "Upload CSV file (test-sized dataset only)",
+        type=["csv"]
+    )
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+
+elif st.session_state.data_source == "github":
+    st.subheader("📥 DataSet from GitHub...")
+    try:
+        # Hardcoded GitHub path
+        github_url = "https://github.com/2024dc04110-dotcom/project-folder/blob/dc26db55c524212700498e9b79c5ff40f268f3fb/data/heartdisease.csv?raw=true"
+        df = pd.read_csv(github_url)
+        st.success("Dataset loaded successfully from GitHub!")
+    except Exception as e:
+        st.error(f"Error loading dataset from GitHub: {e}")
+        st.info("Please check if the GitHub URL is correct and the file is accessible.")
+
+# ------------------------------------------
+# Continue ONLY if data is loaded
+# ------------------------------------------
+if df is not None:
     st.write("Dataset Preview", df.head())
 
-    target_col = st.selectbox("Select Target Column", df.columns)
+    if st.session_state.data_source == "github":
+        target_col = "HeartDisease"
+    else:
+        target_col = st.selectbox("Select Target Column", df.columns)
 
     X = df.drop(columns=[target_col])
     y = df[target_col]
@@ -49,7 +100,6 @@ if uploaded_file:
     # ------------------------------------------
     # Feature Processing
     # ------------------------------------------
-    
     num_cols = X_train.select_dtypes(include=['int64','float64']).columns
     cat_cols = X_train.select_dtypes(include=['object']).columns
 
@@ -57,8 +107,8 @@ if uploaded_file:
         transformers=[
             ('num', StandardScaler(), num_cols),
             ('cat', OneHotEncoder(handle_unknown='ignore'), cat_cols)
-    ]
-)
+        ]
+    )
 
     X_train = preprocessor.fit_transform(X_train)
     X_test = preprocessor.transform(X_test)
